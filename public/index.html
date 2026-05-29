@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Piquant Patisserie | French-Inspired Artisan Pastry Truck — Kyle, TX</title>
+  <meta name="description" content="Handcrafted, small-batch, French-inspired pastries on wheels serving Kyle, Texas and Hays County. Book us for weddings, corporate celebrations, and private events.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="icon" type="image/png" href="https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/TPP%20Logo%201%20(1).png/:/rs=w:32,h:32,cg:true,m">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="sr-only">The Piquant Patisserie — Mobile French Pastry Truck, Kyle Texas</h1>
+
+  <div class="site">
+
+    <!-- NAVIGATION -->
+    <nav class="nav" id="top">
+      <div class="nav-brand">
+        <img class="nav-logo-img" src="https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/TPP%20Logo%201%20(1).png/:/rs=h:80,cg:true,m/qt=q:95" alt="The Piquant Patisserie Crest Logo">
+        <div class="nav-logo-text">
+          The Piquant Patisserie
+          <span>French-inspired · Kyle, Texas</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#menu-section">Menu</a>
+        <a href="#catering-section">Catering</a>
+        <a href="#find-us-section">Find Us</a>
+        <a href="#contact-section">Get in Touch</a>
+      </div>
+      <div class="nav-actions">
+        <button class="cart-btn" id="open-cart-btn" aria-label="Open shopping cart">
+          <i class="ti ti-shopping-cart" aria-hidden="true"></i>
+          <span class="cart-badge" id="cart-count" style="display:none">0</span>
+        </button>
+        <button class="nav-cta" onclick="document.getElementById('menu-section').scrollIntoView({behavior:'smooth'})">Order Now</button>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+      <button class="mobile-nav-close" id="mobile-nav-close">&times;</button>
+      <a href="#menu-section" class="mobile-nav-link">Menu</a>
+      <a href="#catering-section" class="mobile-nav-link">Catering</a>
+      <a href="#find-us-section" class="mobile-nav-link">Find Us</a>
+      <a href="#contact-section" class="mobile-nav-link">Get in Touch</a>
+    </div>
+
+    <!-- HERO -->
+    <header class="hero" style="background-image: url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3292.JPG/:/rs=w:1600,h:900,m');">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <div class="hero-content" data-reveal>
+        <div class="hero-eyebrow">Handcrafted · Small Batch · French-Inspired</div>
+        <h2 class="hero-title">Artisan pastries<br>made with <span class="gold">intention</span></h2>
+        <p class="hero-sub">Delicious cake jars, petite brownie pans, delicate macarons, crème brûlées, and cookies — baked fresh, packaged beautifully, and served daily in Kyle, Texas.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('menu-section').scrollIntoView({behavior:'smooth'})">Explore Our Menu</button>
+          <button class="btn-outline" onclick="document.getElementById('catering-section').scrollIntoView({behavior:'smooth'})">Book Event Catering</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 30C240 60 480 0 720 30C960 60 1200 0 1440 30V60H0V30Z" fill="white"/>
+      </svg>
+    </div>
+
+    <!-- TRUST BAR -->
+    <section class="trust-bar" aria-label="Why choose us" data-reveal>
+      <div class="trust-item">
+        <div class="trust-icon-wrapper"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+        <div class="trust-label"><strong>Small Batch</strong>Made fresh to order</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrapper"><i class="ti ti-truck" aria-hidden="true"></i></div>
+        <div class="trust-label"><strong>Pastry Truck</strong>Serving Kyle & Hays County</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrapper"><i class="ti ti-calendar-event" aria-hidden="true"></i></div>
+        <div class="trust-label"><strong>Event Catering</strong>Weddings & Corporates</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon-wrapper"><i class="ti ti-award" aria-hidden="true"></i></div>
+        <div class="trust-label"><strong>Artisan Quality</strong>Bakery-grade ingredients</div>
+      </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="section" id="menu-section">
+      <div class="section-header" data-reveal>
+        <div>
+          <h2 class="section-title">Our Daily Creations</h2>
+          <p class="section-sub">Baked fresh with premium ingredients. Order for pick-up, local delivery, or event catering.</p>
+        </div>
+        <div class="bulk-promo-tag">
+          <i class="ti ti-percentage" aria-hidden="true"></i> Bulk discounts applied automatically!
+        </div>
+      </div>
+
+      <!-- Dynamic Category Tabs -->
+      <div class="cat-tabs" id="cat-tabs" role="tablist" aria-label="Menu categories">
+        <!-- Built dynamically by script.js -->
+      </div>
+
+      <!-- Dynamic Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <div class="menu-loading" id="menu-loading">
+          <div class="loading-spinner"></div>
+          <p>Loading our daily creations...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider flip">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 30C240 60 480 0 720 30C960 60 1200 0 1440 30V60H0V30Z" fill="#FAF7F2"/>
+      </svg>
+    </div>
+
+    <!-- CATERING -->
+    <section class="catering" id="catering-section" data-reveal>
+      <div class="catering-text">
+        <span class="badge">Event Services</span>
+        <h2>Bring the Patisserie to your next event</h2>
+        <p>From intimate birthday gatherings and elegant bridal showers to large corporate gatherings and full weddings — we bring the charm and taste of a boutique French bakery directly to you in the Kyle, TX area.</p>
+        <div class="catering-features">
+          <div class="feat-row"><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Weddings & bridal engagement parties</div>
+          <div class="feat-row"><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Corporate events, launch parties & team celebrations</div>
+          <div class="feat-row"><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Birthdays, graduations & baby showers</div>
+          <div class="feat-row"><i class="ti ti-circle-check-filled" aria-hidden="true"></i> Custom branding & decorative dessert tables</div>
+        </div>
+        <button class="btn-primary" onclick="document.getElementById('contact-section').scrollIntoView({behavior:'smooth'})">Request a Catering Quote</button>
+      </div>
+      <div class="catering-img" style="background-image: url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3223.JPG/:/rs=w:800,h:600,cg:true,m');">
+        <div class="catering-img-overlay">
+          <span>Weddings · Corporates · Showers</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 30C240 60 480 0 720 30C960 60 1200 0 1440 30V60H0V30Z" fill="white"/>
+      </svg>
+    </div>
+
+    <!-- TRUCK TRACKER -->
+    <section class="section find-us" id="find-us-section" data-reveal>
+      <div class="section-grid">
+        <div class="find-us-info">
+          <span class="badge">Pastry Truck Tracker</span>
+          <h2 class="section-title">Where to find us this week</h2>
+          <p class="section-sub-find">We are a mobile dessert truck rolling across Kyle, Texas and Hays County. Stop by to enjoy fresh torched Crème Brûlées and sweet pastries served straight from our truck window!</p>
+          <div class="social-button-row">
+            <a href="https://instagram.com" target="_blank" class="btn-social-ig"><i class="ti ti-brand-instagram" aria-hidden="true"></i> @thepiquantpatisserie</a>
+            <a href="https://facebook.com" target="_blank" class="btn-social-fb"><i class="ti ti-brand-facebook" aria-hidden="true"></i> Facebook</a>
+          </div>
+          <div class="schedule-card">
+            <h3 class="schedule-title"><i class="ti ti-calendar-time" aria-hidden="true"></i> Weekly Schedule</h3>
+            <ul class="schedule-list" id="schedule-list">
+              <!-- Rendered by script.js -->
+            </ul>
+          </div>
+        </div>
+        <div class="map-container">
+          <div class="map-overlay">
+            <i class="ti ti-map-pin-filled animate-bounce" aria-hidden="true"></i>
+            <span class="map-status" id="live-map-status">Loading truck status...</span>
+            <p id="map-address">Kyle, TX</p>
+          </div>
+          <div class="vector-map">
+            <div class="map-circle c-kyle"></div>
+            <div class="map-circle c-buda"></div>
+            <div class="map-circle c-sanmarcos"></div>
+            <div class="map-circle c-austin"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="gallery-strip" data-reveal>
+      <h2>Fresh From Our Kitchen</h2>
+      <div class="gallery-scroll">
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3229.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3185.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3208.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3216.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3236.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3223.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+        <div class="gallery-item" style="background-image:url('https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/IMG_3292.JPG/:/rs=w:400,h:300,cg:true,m')"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact-section" data-reveal>
+      <div class="section-header text-center">
+        <div>
+          <h2 class="section-title">Let's craft something sweet together</h2>
+          <p class="section-sub">Have a question, custom request, or want to book our food truck for your next event in Kyle, TX? Drop us a line.</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card info-card">
+          <h3>Get in Touch Directly</h3>
+          <p class="contact-pitch">Have a catering dream, custom branding request, or wholesale question? Contact us via the form or through our direct channels. Our pastry coordinator responds within 24 hours.</p>
+          <div class="contact-details">
+            <div class="detail-row">
+              <i class="ti ti-mail" aria-hidden="true"></i>
+              <div><strong>Email us</strong><a href="mailto:hello@thepiquantpatisserie.com">hello@thepiquantpatisserie.com</a></div>
+            </div>
+            <div class="detail-row">
+              <i class="ti ti-phone" aria-hidden="true"></i>
+              <div><strong>Call or Text</strong><a href="tel:5125550199">(512) 555-0199</a></div>
+            </div>
+            <div class="detail-row">
+              <i class="ti ti-map-pin" aria-hidden="true"></i>
+              <div><strong>Serving Kyle, TX</strong><span>Kyle, Buda, San Marcos & Greater Hays County</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-card form-card">
+          <form class="contact-form" id="client-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-name">Your Name <span class="required">*</span></label>
+                <input type="text" id="form-name" placeholder="John Doe" required>
+                <span class="error-msg" id="name-error">Name is required</span>
+              </div>
+              <div class="form-group">
+                <label for="form-email">Email Address <span class="required">*</span></label>
+                <input type="email" id="form-email" placeholder="john@example.com" required>
+                <span class="error-msg" id="email-error">Enter a valid email</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-enquiry">How can we help? <span class="required">*</span></label>
+              <select id="form-enquiry" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="general">General Question</option>
+                <option value="catering">Catering &amp; Event Booking</option>
+                <option value="custom">Custom Bulk Order (48hr notice)</option>
+                <option value="truck-visit">Request Truck Visit</option>
+              </select>
+              <span class="error-msg" id="enquiry-error">Please select an option</span>
+            </div>
+            <div id="catering-details-group" class="hidden-group">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-event-date">Event Date</label>
+                  <input type="date" id="form-event-date">
+                </div>
+                <div class="form-group">
+                  <label for="form-guests">Expected Guests</label>
+                  <input type="number" id="form-guests" placeholder="50" min="10">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-message">Your Message <span class="required">*</span></label>
+              <textarea id="form-message" placeholder="Tell us more about your event, quantity needs, or question..." required></textarea>
+              <span class="error-msg" id="message-error">Message cannot be empty</span>
+            </div>
+            <button type="submit" class="btn-primary-block">Send Message <i class="ti ti-send" aria-hidden="true"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <img class="footer-logo-img" src="https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/TPP%20Logo%201%20(1).png/:/rs=h:60,cg:true,m/qt=q:95" alt="The Piquant Patisserie Logo">
+          <div class="footer-brand-title">The Piquant Patisserie</div>
+          <p class="footer-desc">Artisan French-inspired dessert truck serving handcrafted cake jars, macarons, crème brûlées, cookies, and brownies fresh to Kyle, Texas and Hays County.</p>
+        </div>
+        <div class="footer-col links-col">
+          <h3>Quick Navigation</h3>
+          <a href="#top">Back to Top</a>
+          <a href="#menu-section">Our Creations</a>
+          <a href="#catering-section">Event Catering</a>
+          <a href="#find-us-section">Truck Schedule</a>
+        </div>
+        <div class="footer-col newsletter-col">
+          <h3>Sweet News &amp; Updates</h3>
+          <p>Subscribe to receive weekly truck schedules, special menu drops, and discounts.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="sweet@pastry.com" aria-label="Newsletter email" id="newsletter-email">
+            <button aria-label="Subscribe" id="newsletter-btn"><i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+          </div>
+          <span id="newsletter-success" class="success-text">Subscribed! Check your inbox soon.</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2026 The Piquant Patisserie. All rights reserved.
+          <span>Mockup built for Client Review.</span>
+        </div>
+        <div class="footer-social">
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cart-backdrop" id="cart-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h3>Your Pastry Order</h3>
+      <button class="close-btn" id="close-cart-btn" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-body">
+      <div class="cart-empty" id="cart-empty-message">
+        <i class="ti ti-cookie-off" aria-hidden="true"></i>
+        <p>Your cart is empty.</p>
+        <span>Add some sweet artisan creations!</span>
+        <button class="btn-primary" onclick="document.getElementById('menu-section').scrollIntoView({behavior:'smooth'});document.getElementById('close-cart-btn').click();">Browse Menu</button>
+      </div>
+      <div class="cart-items-container" id="cart-items-container"></div>
+    </div>
+    <div class="cart-footer" id="cart-summary-footer" style="display:none">
+      <div class="promo-box" id="active-promo-banner">
+        <i class="ti ti-discount" aria-hidden="true"></i>
+        <span id="promo-banner-text">Bulk discounts apply automatically!</span>
+      </div>
+      <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">$0.00</span></div>
+      <div class="summary-row discount-row" id="cart-discount-row" style="display:none"><span>Bulk Discounts</span><span id="cart-discount">-$0.00</span></div>
+      <div class="summary-row total-row"><span>Estimated Total</span><span id="cart-total">$0.00</span></div>
+      <button class="checkout-btn" id="cart-checkout-btn">Checkout <i class="ti ti-chevron-right" aria-hidden="true"></i></button>
+      <p class="checkout-note">Orders are confirmed via email. Stripe checkout available when configured.</p>
+    </div>
+  </aside>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-backdrop" id="success-backdrop"></div>
+  <div class="success-modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-icon-badge"><i class="ti ti-circle-check" aria-hidden="true"></i></div>
+    <h3 id="modal-title">Request Submitted!</h3>
+    <p id="modal-description">Thank you for contacting The Piquant Patisserie.</p>
+    <div class="modal-summary-box" id="modal-summary-details"></div>
+    <button class="btn-primary" id="success-modal-close">Done</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

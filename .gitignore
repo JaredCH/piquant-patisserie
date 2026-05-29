@@ -1,0 +1,10 @@
+node_modules/
+.env
+db/piquant.db
+db/piquant.db-wal
+db/piquant.db-shm
+public/uploads/*
+!public/uploads/.gitkeep
+.DS_Store
+Thumbs.db
+*.log

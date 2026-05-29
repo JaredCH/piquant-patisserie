@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | The Piquant Patisserie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div class="login-screen" id="login-screen">
+    <div class="login-card">
+      <img src="https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/TPP%20Logo%201%20(1).png/:/rs=h:80,cg:true,m/qt=q:95" alt="Logo" class="login-logo">
+      <h2>Admin Panel</h2>
+      <p>The Piquant Patisserie</p>
+      <form id="login-form">
+        <div class="login-field">
+          <label for="login-user">Username</label>
+          <input type="text" id="login-user" placeholder="admin" autocomplete="username">
+        </div>
+        <div class="login-field">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <div class="login-error" id="login-error"></div>
+        <button type="submit" class="login-btn">Sign In <i class="ti ti-arrow-right"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard" style="display:none">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/TPP%20Logo%201%20(1).png/:/rs=h:40,cg:true,m/qt=q:95" alt="Logo">
+        <div><strong>Piquant</strong><span>Admin Panel</span></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" data-section="dashboard"><i class="ti ti-dashboard"></i> Dashboard</a>
+        <a href="#" class="sidebar-link" data-section="menu"><i class="ti ti-tools-kitchen-2"></i> Menu Manager</a>
+        <a href="#" class="sidebar-link" data-section="truck"><i class="ti ti-truck"></i> Truck Tracker</a>
+        <a href="#" class="sidebar-link" data-section="stripe"><i class="ti ti-credit-card"></i> Stripe Settings</a>
+        <a href="#" class="sidebar-link" data-section="email"><i class="ti ti-mail"></i> Email Settings</a>
+        <a href="#" class="sidebar-link" data-section="orders"><i class="ti ti-receipt"></i> Orders</a>
+      </nav>
+      <button class="sidebar-logout" id="logout-btn"><i class="ti ti-logout"></i> Sign Out</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="main-header">
+        <h1 id="section-title">Dashboard</h1>
+        <div class="admin-badge"><i class="ti ti-shield-check"></i> Admin</div>
+      </div>
+
+      <!-- DASHBOARD SECTION -->
+      <div class="content-section active" id="section-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card gold"><div class="stat-icon"><i class="ti ti-tools-kitchen-2"></i></div><div class="stat-value" id="stat-total">0</div><div class="stat-label">Total Items</div></div>
+          <div class="stat-card green"><div class="stat-icon"><i class="ti ti-circle-check"></i></div><div class="stat-value" id="stat-active">0</div><div class="stat-label">Active Items</div></div>
+          <div class="stat-card blue"><div class="stat-icon"><i class="ti ti-receipt"></i></div><div class="stat-value" id="stat-orders">0</div><div class="stat-label">Total Orders</div></div>
+          <div class="stat-card purple"><div class="stat-icon"><i class="ti ti-currency-dollar"></i></div><div class="stat-value" id="stat-revenue">$0</div><div class="stat-label">Revenue</div></div>
+        </div>
+        <div class="welcome-card">
+          <h3>Welcome back!</h3>
+          <p>Manage your menu, track your pastry truck, and configure integrations from this dashboard.</p>
+          <p class="date-text" id="dashboard-date"></p>
+        </div>
+      </div>
+
+      <!-- MENU MANAGER -->
+      <div class="content-section" id="section-menu">
+        <div class="section-toolbar">
+          <h3>Menu Items</h3>
+          <button class="btn-gold" id="add-item-btn"><i class="ti ti-plus"></i> Add New Item</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="menu-table">
+            <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Bulk</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="menu-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TRUCK TRACKER -->
+      <div class="content-section" id="section-truck">
+        <div class="card">
+          <h3><i class="ti ti-truck"></i> Current Truck Status</h3>
+          <div class="truck-status-display">
+            <div><strong>Status:</strong> <span id="truck-current-status">—</span></div>
+            <div><strong>Location:</strong> <span id="truck-current-location">—</span></div>
+            <div><strong>Hours:</strong> <span id="truck-current-hours">—</span></div>
+            <div><strong>Message:</strong> <span id="truck-current-message">—</span></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:20px">
+          <h3>Update Truck Status</h3>
+          <form id="truck-form" class="admin-form">
+            <div class="form-field">
+              <label>Status</label>
+              <select id="truck-status"><option value="active">Active</option><option value="closed">Closed</option><option value="prep">Prep Day</option><option value="private">Private Event</option></select>
+            </div>
+            <div class="form-field">
+              <label>Location</label>
+              <select id="truck-location">
+                <option value="Kyle City Square Park">Kyle City Square Park</option>
+                <option value="Plum Creek Market">Plum Creek Market</option>
+                <option value="HEB Plus Kyle (I-35)">HEB Plus Kyle (I-35)</option>
+                <option value="Kyle Town Center">Kyle Town Center</option>
+                <option value="Buda City Park">Buda City Park</option>
+                <option value="San Marcos Premium Outlets">San Marcos Premium Outlets</option>
+                <option value="Austin - South Congress">Austin - South Congress</option>
+                <option value="custom">Custom Location...</option>
+              </select>
+            </div>
+            <div class="form-field" id="custom-location-field" style="display:none">
+              <label>Custom Location</label>
+              <input type="text" id="truck-custom-location" placeholder="Enter custom location">
+            </div>
+            <div class="form-field">
+              <label>Hours</label>
+              <input type="text" id="truck-hours" placeholder="11:00 AM - 3:00 PM">
+            </div>
+            <div class="form-field">
+              <label>Public Message</label>
+              <textarea id="truck-message" placeholder="Check back soon for our next pop-up!"></textarea>
+            </div>
+            <button type="submit" class="btn-gold">Save Truck Status</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- STRIPE SETTINGS -->
+      <div class="content-section" id="section-stripe">
+        <div class="card">
+          <h3><i class="ti ti-credit-card"></i> Stripe Configuration</h3>
+          <div class="stripe-mode" id="stripe-mode">Mode: <span>Not Configured</span></div>
+          <form id="stripe-form" class="admin-form">
+            <div class="form-field"><label>Publishable Key</label><input type="text" id="stripe-pk" placeholder="pk_test_..."></div>
+            <div class="form-field"><label>Secret Key</label><input type="password" id="stripe-sk" placeholder="sk_test_..."></div>
+            <button type="submit" class="btn-gold">Save Stripe Settings</button>
+          </form>
+          <p class="hint">Use <code>sk_test_</code> keys for testing. Switch to <code>sk_live_</code> for production.</p>
+        </div>
+      </div>
+
+      <!-- EMAIL SETTINGS -->
+      <div class="content-section" id="section-email">
+        <div class="card">
+          <h3><i class="ti ti-mail"></i> Email / SMTP Configuration</h3>
+          <form id="email-form" class="admin-form">
+            <div class="form-row"><div class="form-field"><label>SMTP Host</label><input type="text" id="smtp-host" placeholder="smtp.gmail.com"></div><div class="form-field"><label>Port</label><input type="text" id="smtp-port" placeholder="587"></div></div>
+            <div class="form-field"><label>Username</label><input type="text" id="smtp-user" placeholder="you@gmail.com"></div>
+            <div class="form-field"><label>Password</label><input type="password" id="smtp-pass" placeholder="App password"></div>
+            <div class="form-field"><label>From Address</label><input type="text" id="smtp-from" placeholder="hello@thepiquantpatisserie.com"></div>
+            <div class="btn-row">
+              <button type="submit" class="btn-gold">Save Email Settings</button>
+              <button type="button" class="btn-secondary" id="test-email-btn"><i class="ti ti-send"></i> Send Test Email</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ORDERS -->
+      <div class="content-section" id="section-orders">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Date</th><th>Customer</th><th>Email</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody id="orders-tbody"><tr><td colspan="7" class="empty-state">No orders yet.</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MENU ITEM MODAL -->
+  <div class="modal-overlay" id="item-modal-overlay">
+    <div class="modal" id="item-modal">
+      <div class="modal-header"><h3 id="modal-title-text">Add Menu Item</h3><button class="modal-close" id="modal-close-btn">&times;</button></div>
+      <form id="item-form" class="admin-form">
+        <input type="hidden" id="item-id">
+        <div class="form-field"><label>Name *</label><input type="text" id="item-name" required></div>
+        <div class="form-field"><label>Description</label><textarea id="item-desc"></textarea></div>
+        <div class="form-row">
+          <div class="form-field"><label>Price *</label><input type="number" id="item-price" step="0.01" min="0" required></div>
+          <div class="form-field"><label>Category *</label>
+            <select id="item-category" required>
+              <option value="cake-jars">Cake Jars</option>
+              <option value="brownies">Petit Brownies</option>
+              <option value="macarons">Macarons</option>
+              <option value="creme-brulee">Crème Brûlée</option>
+              <option value="cookies">Artisan Cookies</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field"><label>Bulk Qty</label><input type="number" id="item-bulk-qty" min="0" value="0"></div>
+          <div class="form-field"><label>Bulk Price</label><input type="number" id="item-bulk-price" step="0.01" min="0" value="0"></div>
+        </div>
+        <div class="form-field"><label>Image URL</label><input type="text" id="item-image" placeholder="https://..."></div>
+        <div class="form-field">
+          <label>Or Upload Image</label>
+          <div class="upload-zone" id="upload-zone">
+            <i class="ti ti-cloud-upload"></i>
+            <span>Drag & drop or click to upload</span>
+            <input type="file" id="item-file" accept="image/*" style="display:none">
+          </div>
+          <div class="upload-preview" id="upload-preview" style="display:none"><img id="preview-img" alt="Preview"></div>
+        </div>
+        <button type="submit" class="btn-gold btn-full">Save Item</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
