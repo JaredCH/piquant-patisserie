@@ -380,7 +380,7 @@ h1,h2,h3,h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.2
   position: absolute; top: 24px; left: 24px; right: 24px;
   background: var(--color-glass); backdrop-filter: blur(12px);
   border: 1px solid var(--color-glass-border); border-radius: var(--radius-md);
-  padding: 18px 22px; z-index: 2; box-shadow: var(--shadow-medium);
+  padding: 18px 22px; z-index: 1000; box-shadow: var(--shadow-medium);
   display: flex; flex-direction: column; gap: 4px;
 }
 .map-overlay i { color: var(--color-gold); font-size: 24px; margin-bottom: 4px; }
@@ -597,3 +597,44 @@ h1,h2,h3,h4 { font-family: var(--font-serif); font-weight: 600; line-height: 1.2
   .schedule-day { grid-template-columns:100px 1fr 90px; font-size:11px; padding:10px 16px; }
   .gallery-item { flex:0 0 200px; height:150px; }
 }
+
+/* === CUSTOM MAP MARKER STYLES === */
+.custom-map-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.marker-pin-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.marker-core {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 10;
+}
+.marker-pulse {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(196,151,59,0.4);
+  z-index: 1;
+  animation: markerPulse 2s infinite;
+}
+@keyframes markerPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+

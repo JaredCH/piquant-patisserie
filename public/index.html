@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="icon" type="image/png" href="https://img1.wsimg.com/isteam/ip/63aa9923-053a-46e4-a245-b21665b7cdd1/TPP%20Logo%201%20(1).png/:/rs=w:32,h:32,cg:true,m">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -185,12 +187,7 @@
             <span class="map-status" id="live-map-status">Loading truck status...</span>
             <p id="map-address">Kyle, TX</p>
           </div>
-          <div class="vector-map">
-            <div class="map-circle c-kyle"></div>
-            <div class="map-circle c-buda"></div>
-            <div class="map-circle c-sanmarcos"></div>
-            <div class="map-circle c-austin"></div>
-          </div>
+          <div id="map" style="width: 100%; height: 100%; position: absolute; inset: 0; z-index: 1;"></div>
         </div>
       </div>
     </section>

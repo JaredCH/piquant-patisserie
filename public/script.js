@@ -370,6 +370,18 @@ function initTruckTracker() {
     { day: 'Sunday', text: 'Private Event Bookings', location: 'Reserved for private celebrations', hours: 'By Booking Only' }
   ];
 
+  const LOCATION_COORDINATES = {
+    'Kyle City Square Park': [29.9875, -97.8778],
+    'Plum Creek neighborhood': [29.9972, -97.8597],
+    'Plum Creek Neighborhood': [29.9972, -97.8597],
+    'HEB Plus off I-35': [30.0094, -97.8631],
+    'HEB Plus Kyle (off I-35)': [30.0094, -97.8631],
+    'Buda City Park': [30.0825, -97.8444],
+    'San Marcos Premium Outlets': [29.8286, -97.9818],
+    'Austin — South Congress Ave': [30.2241, -97.7562],
+    'Kyle Town Center': [29.9890, -97.8680]
+  };
+
   const scheduleList = document.getElementById('schedule-list');
   const liveMapStatus = document.getElementById('live-map-status');
   const mapAddress = document.getElementById('map-address');
@@ -397,6 +409,65 @@ function initTruckTracker() {
     scheduleList.appendChild(li);
   });
 
+  // --- Initialize Leaflet Map ---
+  let map, marker;
+  const defaultCoords = [29.9875, -97.8778]; // Kyle City Square Park as default center
+
+  try {
+    map = L.map('map', {
+      zoomControl: true,
+      attributionControl: true
+    }).setView(defaultCoords, 13);
+
+    // Elegant CartoDB Positron tiles for a premium aesthetic
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    }).addTo(map);
+
+    // Custom gold div marker with pulsing radar animation
+    const goldIcon = L.divIcon({
+      className: 'custom-map-marker',
+      html: `
+        <div class="marker-pin-wrapper">
+          <div class="marker-pulse"></div>
+          <div class="marker-core"><i class="ti ti-truck" style="color: white; font-size: 14px;"></i></div>
+        </div>
+      `,
+      iconSize: [40, 40],
+      iconAnchor: [20, 20]
+    });
+
+    marker = L.marker(defaultCoords, { icon: goldIcon }).addTo(map);
+  } catch (err) {
+    console.error('[Map] Leaflet initialization error:', err);
+  }
+
+  function updateMapLocation(locationName) {
+    if (!map || !marker) return;
+    
+    let coords = defaultCoords;
+    let found = false;
+    
+    for (const [key, value] of Object.entries(LOCATION_COORDINATES)) {
+      if (locationName.toLowerCase().includes(key.toLowerCase()) || key.toLowerCase().includes(locationName.toLowerCase())) {
+        coords = value;
+        found = true;
+        break;
+      }
+    }
+    
+    marker.setLatLng(coords);
+    map.setView(coords, 14);
+    
+    if (found) {
+      marker.bindPopup(`<strong>The Piquant Patisserie</strong><br>${locationName}`).openPopup();
+    } else {
+      marker.bindPopup(`<strong>The Piquant Patisserie</strong><br>Pastry Truck active around Kyle!`).openPopup();
+    }
+  }
+
   // Fetch live truck status from API
   fetch('/api/truck-status')
     .then(r => r.json())
@@ -404,18 +475,24 @@ function initTruckTracker() {
       if (data.status === 'active') {
         liveMapStatus.innerHTML = `<span class="schedule-status-pill">Live Now</span> ${escapeHtml(data.location)}`;
         mapAddress.textContent = data.message || data.location;
+        updateMapLocation(data.location);
       } else if (data.status === 'closed') {
         liveMapStatus.textContent = 'Truck is currently closed';
         mapAddress.textContent = data.message || 'Check back soon!';
+        updateMapLocation('Kyle City Square Park');
       } else {
         liveMapStatus.textContent = data.status === 'prep' ? 'Kitchen Prep Day' : 'Private Event';
         mapAddress.textContent = data.message || '';
+        updateMapLocation(data.location || 'Kyle City Square Park');
       }
     })
     .catch(() => {
       const todayItem = schedule[alignedIndex];
       liveMapStatus.textContent = todayItem ? todayItem.text : 'Check schedule';
       mapAddress.textContent = todayItem ? todayItem.location : 'Kyle, TX';
+      if (todayItem && todayItem.location) {
+        updateMapLocation(todayItem.location);
+      }
     });
 }
 
